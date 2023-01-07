@@ -1,0 +1,29 @@
+{
+	"name": "@maxcrofts/img-lightbox-element",
+	"version": "0.1.0",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"license": "MIT",
+	"scripts": {
+		"dev": "rollup --config --watch",
+		"build": "rollup --config",
+		"lint:css": "stylelint src/**/*.css",
+		"lint:ts": "eslint src/**/*.ts",
+		"test": "karma start karma.config.cjs"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.3.4",
+		"@types/mocha": "^10.0.1",
+		"eslint": "^8.31.0",
+		"eslint-config-custom": "workspace:*",
+		"karma": "^6.4.1",
+		"karma-config": "workspace:*",
+		"rollup": "^3.9.0",
+		"rollup-config": "workspace:*",
+		"stylelint": "^14.16.1",
+		"stylelint-config-custom": "workspace:*",
+		"tsconfig": "workspace:*",
+		"typescript": "^4.5.2"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"name": "rollup-plugin-tdewolf-minify",
+	"version": "0.0.0",
+	"private": true,
+	"main": "index.js",
+	"type": "module",
+	"dependencies": {
+		"@rollup/pluginutils": "^5.0.2",
+		"@tdewolff/minify": "^2.12.4",
+		"mime-types": "^2.1.35"
+	}
+}

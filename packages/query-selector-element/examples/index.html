@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<title>Query Selector</title>
+<style>
+	query-selector div:not([data-selected]) {
+		display: none;
+	}
+
+	query-selector div::before {
+		content: attr(class);
+	}
+</style>
+<query-selector input-name="theInput">
+	<form>
+		<fieldset>
+			<legend>Radio Buttons</legend>
+
+			<label>
+				<input type="radio" name="theInput" value=".foo" checked />
+				.foo
+			</label>
+			<label>
+				<input type="radio" name="theInput" value=".bar" />
+				.bar
+			</label>
+			<label>
+				<input type="radio" name="theInput" value=".baz" />
+				.baz
+			</label>
+
+			<div class="foo"></div>
+			<div class="bar"></div>
+			<div class="foo"></div>
+			<div class="bar"></div>
+			<div class="foo"></div>
+			<div class="baz"></div>
+			<div class="foo bar"></div>
+			<div class="foo baz"></div>
+		</fieldset>
+	</form>
+</query-selector>
+<script src="index.js" type="module"></script>

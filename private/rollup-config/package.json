@@ -1,0 +1,21 @@
+{
+	"name": "rollup-config",
+	"version": "0.0.0",
+	"private": true,
+	"main": "index.js",
+	"type": "module",
+	"dependencies": {
+		"@rollup/plugin-replace": "^5.0.2",
+		"@rollup/plugin-typescript": "^11.0.0",
+		"@tdewolff/minify": "^2.12.4",
+		"esbuild": "^0.16.12",
+		"glob": "^8.0.3",
+		"lightningcss": "^1.17.1",
+		"rollup": "^3.9.0",
+		"rollup-plugin-dev": "^2.0.4",
+		"rollup-plugin-esbuild": "^5.0.0",
+		"rollup-plugin-lightningcss": "workspace:*",
+		"rollup-plugin-string": "^3.0.0",
+		"rollup-plugin-tdewolf-minify": "workspace:*"
+	}
+}

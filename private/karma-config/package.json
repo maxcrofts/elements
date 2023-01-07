@@ -1,0 +1,17 @@
+{
+	"name": "karma-config",
+	"version": "0.0.0",
+	"private": true,
+	"main": "index.js",
+	"dependencies": {
+		"chai": "^4.3.7",
+		"karma": "^6.4.1",
+		"karma-chai": "^0.1.0",
+		"karma-chrome-launcher": "^3.1.1",
+		"karma-mocha": "^2.0.1",
+		"mocha": "^10.2.0"
+	},
+	"peerDependencies": {
+		"karma": "^6.4.1"
+	}
+}

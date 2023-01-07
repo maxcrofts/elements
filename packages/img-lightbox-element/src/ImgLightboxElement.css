@@ -1,0 +1,56 @@
+::slotted(img) {
+	cursor: zoom-in;
+}
+
+dialog {
+	&::backdrop {
+		cursor: zoom-out;
+	}
+}
+
+figure {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-columns: auto 1fr auto auto;
+	gap: 0.5em;
+	max-height: 100%;
+	margin: 0;
+}
+
+form {
+	display: contents;
+}
+
+[part*="close"] {
+	grid-column-start: 1;
+	grid-column-end: 2;
+}
+
+img {
+	grid-row: 1;
+	grid-column-start: 1;
+	grid-column-end: 5;
+	width: auto;
+	max-height: calc(90vh - 3em);
+}
+
+[part*="control"] {
+	grid-row: 2;
+}
+
+[part*="previous"] {
+	grid-column-start: 3;
+	grid-column-end: 4;
+}
+
+[part*="next"] {
+	grid-column-start: 4;
+	grid-column-end: 5;
+}
+
+figcaption {
+	grid-row: 2;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	text-align: center;
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+	<style>
+		text {
+			font-family: sans-serif;
+			font-size: 100px;
+		}
+	</style>
+
+	<rect width="100%" height="100%" fill="#0099ff"></rect>
+	<path d="M 300,300 L 0,300 L 300,0 Z" fill="yellow"></path>
+	<text x="50%" y="50%" text-anchor="middle" alignment-baseline="middle">3</text>
+</svg>
