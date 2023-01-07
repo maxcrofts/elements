@@ -11,6 +11,9 @@
 		"lint:ts": "eslint src/**/*.ts",
 		"test": "karma start karma.config.cjs"
 	},
+	"files": [
+		"dist"
+	],
 	"devDependencies": {
 		"@types/chai": "^4.3.4",
 		"@types/mocha": "^10.0.1",

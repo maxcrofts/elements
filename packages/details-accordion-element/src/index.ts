@@ -1,3 +1,9 @@
 import DetailsAccordionElement from "./DetailsAccordionElement";
 
-window.customElements.define("details-accordion", DetailsAccordionElement);
+export default DetailsAccordionElement;
+
+console.log(window.customElements.get("details-accordion"))
+
+if (window.customElements.get("details-accordion") === undefined) {
+	window.customElements.define("details-accordion", DetailsAccordionElement);
+}
