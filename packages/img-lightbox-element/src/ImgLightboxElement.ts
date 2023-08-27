@@ -77,21 +77,21 @@ export default class ImgLightboxElement extends HTMLElement {
 		if (selectedElement.hasAttribute("srcset")) {
 			this._imgElement.setAttribute(
 				"srcset",
-				selectedElement.getAttribute("srcset")
+				selectedElement.getAttribute("srcset"),
 			);
 		}
 
 		if (selectedElement.hasAttribute("src")) {
 			this._imgElement.setAttribute(
 				"src",
-				selectedElement.getAttribute("src")
+				selectedElement.getAttribute("src"),
 			);
 		}
 
 		if (selectedElement.hasAttribute("alt")) {
 			this._imgElement.setAttribute(
 				"alt",
-				selectedElement.getAttribute("alt")
+				selectedElement.getAttribute("alt"),
 			);
 		}
 
@@ -112,13 +112,13 @@ export default class ImgLightboxElement extends HTMLElement {
 		const slotElement = shadowRoot.querySelector("slot")!;
 		slotElement.addEventListener(
 			"slotchange",
-			this._handleSlotChange.bind(this)
+			this._handleSlotChange.bind(this),
 		);
 
 		this._dialogElement = shadowRoot.querySelector("dialog")!;
 		this._dialogElement.addEventListener(
 			"click",
-			this._handleClick.bind(this)
+			this._handleClick.bind(this),
 		);
 
 		this._imgElement = shadowRoot.querySelector("img")!;
@@ -127,12 +127,12 @@ export default class ImgLightboxElement extends HTMLElement {
 			shadowRoot.querySelector("[part*=previous]")!;
 		previousButtonElement.addEventListener(
 			"click",
-			this._handlePrevious.bind(this)
+			this._handlePrevious.bind(this),
 		);
 		const nextButtonElement = shadowRoot.querySelector("[part*=next]")!;
 		nextButtonElement.addEventListener(
 			"click",
-			this._handleNext.bind(this)
+			this._handleNext.bind(this),
 		);
 
 		this._currentSpanElement = shadowRoot.querySelector("#current")!;
@@ -144,7 +144,7 @@ export default class ImgLightboxElement extends HTMLElement {
 	attributeChangedCallback(
 		name: string,
 		_oldValue: string | undefined,
-		newValue: string | undefined
+		newValue: string | undefined,
 	): void {
 		if (name === "selectors") {
 			this._selectors = newValue ?? "img";
@@ -222,7 +222,7 @@ export default class ImgLightboxElement extends HTMLElement {
 	 */
 	private _update(): void {
 		this._selectedElements = Array.from(
-			this.querySelectorAll(this._selectors)
+			this.querySelectorAll(this._selectors),
 		);
 		this._totalSpanElement.innerText =
 			this._selectedElements.length.toString();

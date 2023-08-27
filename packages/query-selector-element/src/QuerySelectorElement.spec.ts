@@ -94,15 +94,15 @@ describe("query-selector", () => {
 
 		const aRadioElement =
 			querySelectorElement.querySelector<HTMLInputElement>(
-				"input[value=\\.a]"
+				"input[value=\\.a]",
 			)!;
 		const bRadioElement =
 			querySelectorElement.querySelector<HTMLInputElement>(
-				"input[value=\\.b]"
+				"input[value=\\.b]",
 			)!;
 		const cRadioElement =
 			querySelectorElement.querySelector<HTMLInputElement>(
-				"input[value=\\.c]"
+				"input[value=\\.c]",
 			)!;
 
 		let selectedElements =
@@ -177,7 +177,7 @@ describe("query-selector", () => {
 
 	it("sets `inputName` property based on `input-name` attribute", async () => {
 		const querySelector = document.createElement(
-			"query-selector"
+			"query-selector",
 		) as QuerySelectorElement;
 		const inputName = "theInput";
 		querySelector.setAttribute("input-name", inputName);
@@ -186,7 +186,7 @@ describe("query-selector", () => {
 
 	it("sets `input-name` attribute based on `inputName` property", async () => {
 		const querySelector = document.createElement(
-			"query-selector"
+			"query-selector",
 		) as QuerySelectorElement;
 		const inputName = "theInput";
 		querySelector.inputName = inputName;
@@ -195,7 +195,7 @@ describe("query-selector", () => {
 
 	it("sets `selectors` property based on `selectors` attribute", async () => {
 		const querySelector = document.createElement(
-			"query-selector"
+			"query-selector",
 		) as QuerySelectorElement;
 		const selectors = ".aClass";
 		querySelector.setAttribute("selectors", selectors);
@@ -204,7 +204,7 @@ describe("query-selector", () => {
 
 	it("sets `selectors` attribute based on `selectors` property", async () => {
 		const querySelector = document.createElement(
-			"query-selector"
+			"query-selector",
 		) as QuerySelectorElement;
 		const selectors = ".aClass";
 		querySelector.selectors = selectors;

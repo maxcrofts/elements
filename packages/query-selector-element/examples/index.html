@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <title>Query Selector</title>
 <style>
 	query-selector div:not([data-selected]) {
@@ -15,15 +15,28 @@
 			<legend>Radio Buttons</legend>
 
 			<label>
-				<input type="radio" name="theInput" value=".foo" checked />
+				<input
+					name="theInput"
+					type="radio"
+					value=".foo"
+					checked
+				/>
 				.foo
 			</label>
 			<label>
-				<input type="radio" name="theInput" value=".bar" />
+				<input
+					name="theInput"
+					type="radio"
+					value=".bar"
+				/>
 				.bar
 			</label>
 			<label>
-				<input type="radio" name="theInput" value=".baz" />
+				<input
+					name="theInput"
+					type="radio"
+					value=".baz"
+				/>
 				.baz
 			</label>
 
@@ -38,4 +51,7 @@
 		</fieldset>
 	</form>
 </query-selector>
-<script src="index.js" type="module"></script>
+<script
+	src="index.js"
+	type="module"
+></script>

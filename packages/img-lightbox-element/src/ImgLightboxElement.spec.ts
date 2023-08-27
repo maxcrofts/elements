@@ -21,7 +21,7 @@ describe("img-lightbox", () => {
 	beforeEach(async () => {
 		// Create lightbox element and append to body
 		imgLightboxElement = document.createElement(
-			"img-lightbox"
+			"img-lightbox",
 		) as ImgLightboxElement;
 		document.body.appendChild(imgLightboxElement);
 
@@ -44,13 +44,13 @@ describe("img-lightbox", () => {
 
 		dialogElement = imgLightboxElement.shadowRoot!.querySelector("dialog")!;
 		closeButtonElement = imgLightboxElement.shadowRoot!.querySelector(
-			"button[part*=close]"
+			"button[part*=close]",
 		)!;
 		imgElement = imgLightboxElement.shadowRoot!.querySelector("img")!;
 		currentSpanElement =
 			imgLightboxElement.shadowRoot!.querySelector("span#current")!;
 		previousButtonElement = imgLightboxElement.shadowRoot!.querySelector(
-			"button[part*=previous]"
+			"button[part*=previous]",
 		)!;
 		nextButtonElement =
 			imgLightboxElement.shadowRoot!.querySelector("button[part*=next]")!;

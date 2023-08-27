@@ -12,7 +12,7 @@ describe("details-accordion", () => {
 
 	beforeEach(async () => {
 		detailsAccordionElement = document.createElement(
-			"details-accordion"
+			"details-accordion",
 		) as DetailsAccordionElement;
 		document.body.appendChild(detailsAccordionElement);
 
@@ -32,12 +32,12 @@ describe("details-accordion", () => {
 		`;
 
 		detailsElements = Array.from(
-			detailsAccordionElement.querySelectorAll("details")
+			detailsAccordionElement.querySelectorAll("details"),
 		);
 		assert.equal(detailsElements.length, 2);
 
 		summaryElements = Array.from(
-			detailsAccordionElement.querySelectorAll("summary")
+			detailsAccordionElement.querySelectorAll("summary"),
 		);
 		assert.equal(summaryElements.length, 2);
 	});
@@ -57,7 +57,7 @@ describe("details-accordion", () => {
 		detailsAccordionElement.animationDuration = 5;
 		summaryElements[0].click();
 		assert.isTrue(
-			detailsElements[0].hasAttribute("data-details-accordion-open")
+			detailsElements[0].hasAttribute("data-details-accordion-open"),
 		);
 	});
 
@@ -65,7 +65,7 @@ describe("details-accordion", () => {
 		detailsAccordionElement.animationDuration = 5;
 		summaryElements[0].click();
 		assert.isTrue(
-			detailsElements[0].hasAttribute("data-details-accordion-animating")
+			detailsElements[0].hasAttribute("data-details-accordion-animating"),
 		);
 	});
 
@@ -93,7 +93,7 @@ describe("details-accordion", () => {
 		summaryElements[0].click();
 		// Details element should no longer have `data-details-accordion-open` attribute
 		assert.isFalse(
-			detailsElements[0].hasAttribute("data-details-accordion-open")
+			detailsElements[0].hasAttribute("data-details-accordion-open"),
 		);
 	});
 
@@ -106,13 +106,13 @@ describe("details-accordion", () => {
 		summaryElements[0].click();
 		// Details element should still have `data-details-accordion-animating` attribute
 		assert.isTrue(
-			detailsElements[0].hasAttribute("data-details-accordion-animating")
+			detailsElements[0].hasAttribute("data-details-accordion-animating"),
 		);
 		// Wait for animation to complete
 		await detailsAccordionElement.animationFinished;
 		// Details element should no longer have `data-details-accordion-animating` attribute
 		assert.isFalse(
-			detailsElements[0].hasAttribute("data-details-accordion-animating")
+			detailsElements[0].hasAttribute("data-details-accordion-animating"),
 		);
 	});
 
@@ -120,11 +120,11 @@ describe("details-accordion", () => {
 		const animationDuration = 42;
 		detailsAccordionElement.setAttribute(
 			"animation-duration",
-			animationDuration.toString()
+			animationDuration.toString(),
 		);
 		assert.equal(
 			detailsAccordionElement.animationDuration,
-			animationDuration
+			animationDuration,
 		);
 	});
 
@@ -133,7 +133,7 @@ describe("details-accordion", () => {
 		detailsAccordionElement.animationDuration = animationDuration;
 		assert.equal(
 			detailsAccordionElement.getAttribute("animation-duration"),
-			animationDuration.toString()
+			animationDuration.toString(),
 		);
 	});
 });

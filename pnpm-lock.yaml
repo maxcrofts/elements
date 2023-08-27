@@ -6,10 +6,12 @@ importers:
     specifiers:
       eslint-config-custom: workspace:*
       prettier: latest
+      prettier-plugin-organize-attributes: ^1.0.0
       turbo: latest
     devDependencies:
       eslint-config-custom: link:private/eslint-config-custom
       prettier: 3.0.2
+      prettier-plugin-organize-attributes: 1.0.0_prettier@3.0.2
       turbo: 1.10.13
 
   packages/details-accordion-element:
@@ -3122,6 +3124,15 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  /prettier-plugin-organize-attributes/1.0.0_prettier@3.0.2:
+    resolution: {integrity: sha512-+NmameaLxbCcylEXsKPmawtzla5EE6ECqvGkpfQz4KM847fXDifB1gFnPQEpoADAq6IXg+cMI8Z0ISJEXa6fhg==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      prettier: ^3.0.0
+    dependencies:
+      prettier: 3.0.2
+    dev: true
 
   /prettier/3.0.2:
     resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}

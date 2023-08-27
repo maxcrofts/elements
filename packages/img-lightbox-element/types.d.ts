@@ -17,11 +17,11 @@ declare module "*.svg" {
 interface HTMLElement {
 	hasAttribute<KnownAttributes extends string, CheckedString extends string>(
 		this: HTMLElementWith<KnownAttributes>,
-		name: CheckedString
+		name: CheckedString,
 	): this is HTMLElementWith<CheckedString | KnownAttributes>;
 	hasAttribute<CheckedString extends string>(
 		this: HTMLElement,
-		name: CheckedString
+		name: CheckedString,
 	): this is HTMLElementWith<CheckedString>;
 }
 

@@ -1,0 +1,30 @@
+{
+	"printWidth": 80,
+	"plugins": ["prettier-plugin-organize-attributes"],
+	"attributeGroups": [
+		"^class$",
+		"^id$",
+		"^name$",
+		"^part$",
+		"^data-",
+		"^src$",
+		"^for$",
+		"^type$",
+		"^href$",
+		"^value$",
+		"^title$",
+		"^alt$",
+		"^role$",
+		"^aria-",
+		"^tabindex$",
+		"^style$"
+	],
+	"overrides": [
+		{
+			"files": ["**/examples/*.html"],
+			"options": {
+				"singleAttributePerLine": true
+			}
+		}
+	]
+}

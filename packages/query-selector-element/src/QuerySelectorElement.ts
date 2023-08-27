@@ -54,7 +54,7 @@ export default class QuerySelector extends HTMLElement {
 	attributeChangedCallback(
 		name: string,
 		_oldValue: string | undefined,
-		newValue: string | undefined
+		newValue: string | undefined,
 	): void {
 		if (name === "input-name") {
 			this._inputName = newValue;
@@ -86,7 +86,7 @@ export default class QuerySelector extends HTMLElement {
 		if (this._inputName !== undefined) {
 			// TODO: Support more than radio buttons
 			const input = this.querySelector(
-				`input[name=${this._inputName}]:checked`
+				`input[name=${this._inputName}]:checked`,
 			);
 
 			if (input !== null) {
@@ -97,12 +97,12 @@ export default class QuerySelector extends HTMLElement {
 		if (this._selectors !== undefined) {
 			// If we have a selectors attribute
 			this._selectedElements = Array.from(
-				this.querySelectorAll(this._selectors)
+				this.querySelectorAll(this._selectors),
 			);
 		} else if (inputSelectors !== "") {
 			// If an input has selected something
 			this._selectedElements = Array.from(
-				this.querySelectorAll(inputSelectors)
+				this.querySelectorAll(inputSelectors),
 			);
 			// Clear `inputSelectors` so we get the fast path below
 			inputSelectors = "";

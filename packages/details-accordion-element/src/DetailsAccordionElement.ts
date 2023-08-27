@@ -54,7 +54,7 @@ export default class DetailsAccordionElement extends HTMLElement {
 		shadowRoot.innerHTML = `<style>::slotted(details){overflow-y:hidden}</style><slot></slot>`;
 		shadowRoot.addEventListener(
 			"slotchange",
-			this._handleSlotChange.bind(this)
+			this._handleSlotChange.bind(this),
 		);
 
 		// Observe click events
@@ -64,7 +64,7 @@ export default class DetailsAccordionElement extends HTMLElement {
 	attributeChangedCallback(
 		name: string,
 		_oldValue: string | undefined,
-		newValue: string | undefined
+		newValue: string | undefined,
 	): void {
 		if (name === "animation-duration") {
 			this._animationDuration = newValue != null ? parseInt(newValue) : 0;
@@ -187,7 +187,7 @@ export default class DetailsAccordionElement extends HTMLElement {
 			{
 				duration: this._animationDuration,
 				easing: "ease-out",
-			}
+			},
 		);
 
 		// Construct promise
