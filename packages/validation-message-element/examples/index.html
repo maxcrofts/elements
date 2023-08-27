@@ -1,0 +1,115 @@
+<!doctype html>
+<title>Validation Message</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous"
+/>
+<style>
+	.was-validated fieldset:invalid > .invalid-feedback {
+		display: block;
+	}
+</style>
+<div class="container-fluid">
+	<form>
+		<div class="my-3">
+			<label
+				class="form-label"
+				for="email"
+			>
+				Email
+			</label>
+			<input
+				class="form-control"
+				id="email"
+				name="email"
+				type="email"
+				required
+				oninvalid="this.form.classList.add('was-validated')"
+			/>
+			<validation-message
+				class="invalid-feedback"
+				for="email"
+			>
+			</validation-message>
+		</div>
+
+		<div class="my-3">
+			<label
+				class="form-label"
+				for="phone"
+			>
+				Phone number
+			</label>
+			<input
+				class="form-control"
+				id="phone"
+				name="phone"
+				type="tel"
+				pattern="\+?[\d\s]+"
+				required
+				oninvalid="this.form.classList.add('was-validated')"
+			/>
+			<validation-message
+				class="invalid-feedback"
+				for="phone"
+			>
+			</validation-message>
+		</div>
+
+		<fieldset class="my-3">
+			<legend class="form-label fs-6">Preferred contact method</legend>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					id="preferredContactEmail"
+					name="preferredContact"
+					type="radio"
+					value="email"
+					required
+					oninvalid="this.form.classList.add('was-validated')"
+				/>
+				<label
+					class="form-check-label"
+					for="preferredContactEmail"
+				>
+					Email
+				</label>
+			</div>
+			<div class="form-check">
+				<input
+					class="form-check-input"
+					id="preferredContactPhone"
+					name="preferredContact"
+					type="radio"
+					value="phone"
+					required
+				/>
+				<label
+					class="form-check-label"
+					for="preferredContactPhone"
+				>
+					Phone
+				</label>
+			</div>
+			<validation-message
+				class="invalid-feedback"
+				for="preferredContactEmail"
+			>
+			</validation-message>
+		</fieldset>
+		<div class="my-3">
+			<button
+				class="btn btn-primary"
+				type="submit"
+			>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>
+<script
+	src="index.js"
+	type="module"
+></script>
