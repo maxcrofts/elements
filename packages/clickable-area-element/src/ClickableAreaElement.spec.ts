@@ -23,4 +23,23 @@ describe("clickable-area", () => {
 
 		assert.isTrue(inputElement.checked);
 	});
+
+	it("associates implicitly", async () => {
+		document.body.innerHTML = `
+			<clickable-area>
+				<input type="checkbox" />
+			</clickable-area>
+		`;
+
+		const clickableAreaElement = document.body
+			.firstElementChild! as ClickableAreaElement;
+		const inputElement = clickableAreaElement
+			.firstElementChild! as HTMLInputElement;
+
+		assert.isFalse(inputElement.checked);
+
+		clickableAreaElement.click();
+
+		assert.isTrue(inputElement.checked);
+	});
 });

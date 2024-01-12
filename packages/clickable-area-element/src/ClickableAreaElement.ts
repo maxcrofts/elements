@@ -2,10 +2,21 @@ export default class ClickableAreaElement extends HTMLElement {
 	/**
 	 * @internal
 	 */
+	private _implicitControl: HTMLElement | null = null;
+
+	/**
+	 * @internal
+	 */
 	private _htmlFor: string | undefined;
 
 	static get observedAttributes(): string[] {
 		return ["for"];
+	}
+
+	get control(): HTMLElement | null {
+		return this._htmlFor != null
+			? document.getElementById(this._htmlFor) ?? this._implicitControl
+			: this._implicitControl;
 	}
 
 	get htmlFor(): string | undefined {
@@ -26,10 +37,7 @@ export default class ClickableAreaElement extends HTMLElement {
 		this.addEventListener(
 			"click",
 			(e) => {
-				const element =
-					this._htmlFor != null
-						? document.getElementById(this._htmlFor)
-						: null;
+				const control = this.control;
 
 				// Pass focus if current target is not a form control element
 				const tagName = (e.target as HTMLElement)?.tagName;
@@ -39,17 +47,31 @@ export default class ClickableAreaElement extends HTMLElement {
 					tagName !== "SELECT" &&
 					tagName !== "TEXTAREA"
 				) {
-					element?.focus();
+					control?.focus();
 				}
 
 				// Forward click event if it is not for us
-				if (e.target !== element) {
+				if (e.target !== control) {
 					const newEvent = new PointerEvent(e.type, e);
-					element?.dispatchEvent(newEvent);
+					control?.dispatchEvent(newEvent);
 				}
 			},
 			false,
 		);
+
+		const observer = new MutationObserver(this._walk.bind(this));
+		observer.observe(this, {
+			subtree: true,
+			childList: true,
+		});
+	}
+
+	connectedCallback() {
+		this._walk();
+	}
+
+	disconnnectedCallback() {
+		this._implicitControl = null;
 	}
 
 	attributeChangedCallback(
@@ -60,5 +82,36 @@ export default class ClickableAreaElement extends HTMLElement {
 		if (name === "for") {
 			this._htmlFor = newValue;
 		}
+	}
+
+	/**
+	 * @internal
+	 */
+	private _walk(): void {
+		const treeWalker = document.createTreeWalker(
+			this,
+			NodeFilter.SHOW_ELEMENT,
+			{
+				acceptNode: (node) => {
+					switch ((node as HTMLElement)?.tagName) {
+						case "INPUT":
+							return (node as HTMLInputElement).hidden
+								? NodeFilter.FILTER_SKIP
+								: NodeFilter.FILTER_ACCEPT;
+						case "BUTTON":
+						case "METER":
+						case "OUTPUT":
+						case "PROGRESS":
+						case "SELECT":
+						case "TEXTAREA":
+							return NodeFilter.FILTER_ACCEPT;
+						default:
+							return NodeFilter.FILTER_SKIP;
+					}
+				},
+			},
+		);
+
+		this._implicitControl = treeWalker.nextNode() as HTMLElement;
 	}
 }
