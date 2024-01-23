@@ -1,0 +1,194 @@
+<!doctype html>
+<title>Auto Advance</title>
+<link
+	href="https://unpkg.com/98.css"
+	rel="stylesheet"
+/>
+<style>
+	auto-tab {
+		display: contents;
+	}
+
+	fieldset {
+		all: unset;
+		display: inline-block;
+	}
+
+	input[type="text"] {
+		width: 63px;
+		margin-top: 6px;
+		margin-right: 7px;
+		margin-left: 7px;
+	}
+
+	input[type="text"]:first-of-type {
+		margin-left: 0;
+	}
+
+	input[type="text"]:last-of-type {
+		margin-right: 0;
+	}
+</style>
+<div
+	class="window"
+	style="width: 494px"
+>
+	<div class="title-bar">
+		<div class="title-bar-text">Auto Tab</div>
+		<div class="title-bar-controls">
+			<button
+				aria-label="Close"
+				disabled
+			></button>
+		</div>
+	</div>
+	<div
+		class="window-body"
+		style="
+			margin-top: 85px;
+			margin-right: 45px;
+			margin-bottom: 10px;
+			margin-left: 45px;
+		"
+	>
+		<form id="form">
+			<auto-tab>
+				<div class="field-row">
+					<input
+						id="phone"
+						name="activate"
+						type="radio"
+						value="phone"
+						tabindex="1"
+					/>
+					<label for="phone">Activate later</label>
+				</div>
+				<div class="field-row">
+					<input
+						id="now"
+						name="activate"
+						type="radio"
+						value="now"
+						tabindex="1"
+						checked
+					/>
+					<label for="now">Activate now</label>
+				</div>
+				<fieldset style="margin-top: 98px; margin-bottom: 64px">
+					<legend>Product Key:</legend>
+					<input
+						name="text1"
+						type="text"
+						tabindex="1"
+						autofocus
+						maxlength="5"
+						minlength="5"
+						required
+					/>
+					-
+					<input
+						name="text2"
+						type="text"
+						tabindex="2"
+						maxlength="5"
+						minlength="5"
+						required
+					/>
+					-
+					<input
+						name="text3"
+						type="text"
+						tabindex="3"
+						maxlength="5"
+						minlength="5"
+						required
+					/>
+					-
+					<input
+						name="text4"
+						type="text"
+						tabindex="4"
+						maxlength="5"
+						minlength="5"
+						required
+					/>
+					-
+					<input
+						name="text5"
+						type="text"
+						tabindex="5"
+						maxlength="5"
+						minlength="5"
+						required
+					/>
+				</fieldset>
+				<hr
+					style="
+						margin-top: 0;
+						margin-right: -45px;
+						margin-bottom: 10px;
+						margin-left: -45px;
+					"
+				/>
+				<section
+					class="field-row"
+					style="
+						flex-direction: row-reverse;
+						justify-content: space-between;
+					"
+				>
+					<div
+						class="field-row"
+						style="flex-direction: row-reverse"
+					>
+						<button
+							type="submit"
+							style="margin-right: 50px"
+						>
+							Next&nbsp;&nbsp;&gt;
+						</button>
+						<button type="reset">&lt;&nbsp;&nbsp;Back</button>
+					</div>
+					<button
+						id="randomize"
+						type="button"
+						style="margin-left: 0px"
+					>
+						Randomize tabindex
+					</button>
+				</section>
+			</auto-tab>
+		</form>
+	</div>
+</div>
+<script
+	src="index.js"
+	type="module"
+></script>
+<script>
+	const formElement = document.getElementById("form");
+	const radioElements = document.querySelectorAll("input[name=activate]");
+	const phoneRadioElement = document.getElementById("phone");
+	const textInputElements = document.querySelectorAll("input[name^=text]");
+	const randomizeButtonElement = document.getElementById("randomize");
+
+	formElement.addEventListener("reset", () => {
+		textInputElements.forEach((element) => (element.disabled = false));
+	});
+
+	radioElements.forEach((radioElement) => {
+		radioElement.addEventListener("change", () => {
+			textInputElements.forEach(
+				(element) => (element.disabled = phoneRadioElement.checked),
+			);
+		});
+	});
+
+	randomizeButtonElement.addEventListener("click", () => {
+		const indices = [1, 2, 3, 4, 5].sort(() => Math.random() - 0.5);
+
+		textInputElements.forEach((element) => {
+			element.placeholder = element.tabIndex = indices.shift();
+		});
+	});
+</script>
